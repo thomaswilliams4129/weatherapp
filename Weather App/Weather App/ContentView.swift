@@ -36,8 +36,15 @@ struct ContentView: View {
                 }
                 .padding(.top, 30)
                 
-                Spacer()
+                HStack {
+                    SmallWeatherView(day: "MON", icon: "cloud.sun.fill", temperature: "72")
+                    SmallWeatherView(day: "TUE", icon: "cloud.sun.fill", temperature: "72")
+                    SmallWeatherView(day: "WED", icon: "cloud.sun.fill", temperature: "72")
+                    SmallWeatherView(day: "THU", icon: "cloud.sun.fill", temperature: "72")
+                    SmallWeatherView(day: "FRI", icon: "cloud.sun.fill", temperature: "72")
+                }
                 
+                Spacer()
             }
         }
     }
