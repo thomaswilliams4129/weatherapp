@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel = WeatherViewModel()
+    
     var body: some View {
         ZStack {
             // Background gradient
@@ -18,8 +20,8 @@ struct ContentView: View {
             )
             .ignoresSafeArea() // Makes it go edge-to-edge
             
-            VStack {
-                Text("Cupertino, CA")
+            VStack(alignment: .center) {
+                Text("\(viewModel.cityName)")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
@@ -30,7 +32,7 @@ struct ContentView: View {
                     Image(systemName: "cloud.sun.fill")
                         .symbolRenderingMode(.multicolor)
                         .font(. system(size: 100))
-                    Text("72°")
+                    Text("\(viewModel.temperature)")
                         .font(.system(size: 70))
                         .foregroundColor(.white)
                 }
@@ -46,6 +48,9 @@ struct ContentView: View {
                 
                 Spacer()
             }
+        }
+        .onAppear {
+            viewModel.fetchWeather()
         }
     }
 }
